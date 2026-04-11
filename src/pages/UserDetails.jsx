@@ -4,6 +4,7 @@ import RepoCard from "../components/RepoCard";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
 import Empty from "../components/Empty";
+
 export default function UserDetails({ username, goBack }) {
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -89,7 +90,7 @@ export default function UserDetails({ username, goBack }) {
       {/* States */}
       {loading && <Loader />}
       {error && <Error message={error} />}
-      {!loading && processedRepos.length === 0 && <Empty />}
+      {!loading && !error && processedRepos.length === 0 && <Empty />}
 
       {/* Repo List */}
       <div className="grid">
